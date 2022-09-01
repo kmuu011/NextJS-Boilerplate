@@ -1,4 +1,4 @@
-export interface iHeaderProps {
+export interface IHeaderProps {
     title?: string
     description?: string
 }
