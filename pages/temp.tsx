@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
-import styles from '../styles/Home.module.scss'
-import Header from "../src/component/common/header";
-import Footer from "../src/component/common/footer";
+import styles from '../styles/Temp.module.scss'
+import Footer from "../src/component/common/Footer";
 import {iHeaderProps} from "../src/type/type";
+import SetHead from "../src/component/common/Head";
 
 const Temp: NextPage = () => {
   const headerProps: iHeaderProps = {
@@ -11,7 +11,7 @@ const Temp: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Header {...headerProps}/>
+      <SetHead {...headerProps}/>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
