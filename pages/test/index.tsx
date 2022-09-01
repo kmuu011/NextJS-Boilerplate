@@ -8,7 +8,7 @@ const Test: NextPage = () => {
 
     return (
         <div className={styles.container}>
-            싱하포터와 굴다리 기사단
+            test
         </div>
     )
 }
