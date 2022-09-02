@@ -10,11 +10,29 @@ const Home: NextPage = () => {
     const [password, setPassword] = useState<string>('');
     const [keepCheck, setKeepCheck] = useState<boolean>(false);
 
-    const idInputRef = useRef(null);
-    const passwordInputRef = useRef(null);
+    const idInputRef = useRef<HTMLInputElement>(null);
+    const passwordInputRef = useRef<HTMLInputElement>(null);
 
     const login: FormEventHandler = async (e): Promise<void> => {
         e.preventDefault();
+
+        if(id.replace(/\s/g, '') === ''){
+            alert('아이디를 입력해주세요.');
+            idInputRef.current?.focus();
+            return;
+        }
+
+        if(id.replace(/\s/g, '').length < 3){
+            alert('아이디는 3글자 이상 입력해야합니다.');
+            idInputRef.current?.focus();
+            return;
+        }
+
+        if(password.replace(/\s/g, '') === ''){
+            alert('비밀번호를 입력해주세요.');
+            passwordInputRef.current?.focus();
+            return;
+        }
 
         const result = await loginApi({id, password, keepCheck});
 

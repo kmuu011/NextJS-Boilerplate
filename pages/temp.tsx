@@ -16,7 +16,7 @@ const Temp: NextPage = () => {
     }
 
     const testTokenCode = async () => {
-        const result: AxiosResponse|undefined = await tokenCheck();
+        const result: AxiosResponse | undefined = await tokenCheck();
 
         console.log(result?.data)
     }
