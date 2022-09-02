@@ -7,6 +7,7 @@ export interface LoginDto {
 export interface SignUpDto {
     id: string
     password: string
+    passwordCheck?: string
     nickname: string
     email: string
 }
