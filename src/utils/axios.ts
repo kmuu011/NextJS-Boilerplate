@@ -2,7 +2,8 @@ import Axios, {AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse} from 'axi
 import {hostDomain} from '../config';
 
 export const callApi = async <T>(
-    method: string, url: string, data?: T,
+    method: string, url: string,
+    data?: T,
     headers?: AxiosRequestHeaders
 ): Promise<AxiosResponse | undefined> => {
     const config: AxiosRequestConfig<T> = {
@@ -11,6 +12,15 @@ export const callApi = async <T>(
         data,
         headers: {}
     };
+
+    if (method === 'get' && data) {
+        config.url += '?';
+
+        Object.keys(data).forEach((k: string, i: number) => {
+            config.url += k + '=' + Object.values(data)[i] +
+                ((Object.keys(data).length-1 !== i) ? '&' : '')
+        });
+    }
 
     const token = localStorage.getItem('token-code');
 
