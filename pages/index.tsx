@@ -1,10 +1,12 @@
 import type {NextPage} from 'next';
 import styles from '../styles/Home.module.scss';
-import Footer from "../src/component/common/Footer";
 import {FormEventHandler, useEffect, useRef, useState} from "react";
 import SetHead from "../src/component/common/Head";
 import {loginApi} from "../src/api/member";
 import Link from "next/link";
+import {goToPage} from "../src/utils/utils";
+import {AxiosResponse} from "axios";
+import Footer from "../src/component/common/Footer";
 
 const Home: NextPage = () => {
     const [id, setId] = useState<string>('');
@@ -35,7 +37,7 @@ const Home: NextPage = () => {
             return;
         }
 
-        const result = await loginApi({id, password, keepCheck});
+        const result: AxiosResponse | undefined = await loginApi({id, password, keepCheck});
 
         if (result?.status !== 200) {
             alert(result?.data.message);
@@ -44,7 +46,7 @@ const Home: NextPage = () => {
 
         localStorage.setItem('token-code', result.data.tokenCode);
 
-        console.log('로그인 성공!');
+        goToPage('/todoGroup');
     };
 
     useEffect(() => {
@@ -92,10 +94,8 @@ const Home: NextPage = () => {
                     <button>회원가입</button>
                 </Link>
             </div>
-
-            <Footer/>
         </div>
     )
 }
 
-export default Home
+export default Home;

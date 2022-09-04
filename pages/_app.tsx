@@ -1,7 +1,8 @@
 import '../styles/globals.scss';
 import '../public/static/font/NanumSquareRound/style.scss';
 import type {AppProps} from 'next/app';
-import {useEffect} from "react";
+import {Fragment, useEffect} from "react";
+import Footer from "../src/component/common/Footer";
 
 function MyApp({Component, pageProps}: AppProps) {
     useEffect(() => {
@@ -15,7 +16,12 @@ function MyApp({Component, pageProps}: AppProps) {
         }
     }, []);
 
-    return <Component {...pageProps} />
+    return (
+        <Fragment>
+            <Component {...pageProps}/>
+            <Footer/>
+        </Fragment>
+    )
 }
 
 export default MyApp
