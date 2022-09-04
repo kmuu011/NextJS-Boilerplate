@@ -1,6 +1,5 @@
 import type {NextPage} from 'next';
 import styles from '../../styles/SignUp.module.scss';
-import Footer from "../../src/component/common/Footer";
 import {BaseSyntheticEvent, FormEventHandler, useCallback, useRef, useState} from "react";
 import SetHead from "../../src/component/common/Head";
 import {duplicateCheckApi, signUpApi} from "../../src/api/member";
@@ -172,8 +171,6 @@ const Index: NextPage = () => {
                     <button>메인으로</button>
                 </Link>
             </div>
-
-            <Footer/>
         </div>
     )
 }

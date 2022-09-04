@@ -1,6 +1,5 @@
 import type {NextPage} from 'next';
 import styles from '../styles/Temp.module.scss';
-import Footer from "../src/component/common/Footer";
 import {IHeaderProps} from "../src/type/type";
 import SetHead from "../src/component/common/Head";
 import {tokenCheck} from "../src/api/member";
@@ -67,8 +66,6 @@ const Temp: NextPage = () => {
                     </a>
                 </div>
             </main>
-
-            <Footer/>
         </div>
     )
 }

@@ -47,12 +47,11 @@ export const callApi = async <T>(
 
         return result;
     } catch (e: any) {
-        let status: number | undefined = e?.response?.status;
+        let status: number = e?.response?.status;
 
         switch (status) {
             case 0:
-                alert('네트워크와 연결이 올바르지 않습니다.\n잠시후 다시 시도해주세요.');
-                break;
+                return {data: {message: '네트워크와 연결이 올바르지 않습니다.\n잠시후 다시 시도해주세요.'}} as AxiosResponse
             case 401:
                 localStorage.removeItem('token-code');
                 window.location.href = '/';
