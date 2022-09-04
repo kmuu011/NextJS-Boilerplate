@@ -6,13 +6,13 @@ const Footer: FunctionComponent = () => {
     return (
         <footer className={styles.footer}>
             <a
-                href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                href="https://github.com/kmuu011/NextJS_Boilerplate"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Powered by {' '}
+                Made by {' '}
                 <span className={styles.logo}>
-                    <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
+                    <Image src="/violet.png" alt="Violet Logo" width={"44"} height={"44"}/>
                 </span>
             </a>
         </footer>
