@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import {IHeaderProps} from "../../type/type";
 import {FunctionComponent} from "react";
 

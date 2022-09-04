@@ -1,5 +1,5 @@
-import type {NextPage} from 'next'
-import styles from '../styles/Temp.module.scss'
+import type {NextPage} from 'next';
+import styles from '../styles/Temp.module.scss';
 import Footer from "../src/component/common/Footer";
 import {IHeaderProps} from "../src/type/type";
 import SetHead from "../src/component/common/Head";
