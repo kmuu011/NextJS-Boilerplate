@@ -1,3 +1,5 @@
+@import "reset";
+
 :root {
   --background-color: #f9fafb;
   --color-1: #c4b6f6;
@@ -24,12 +26,25 @@ body {
   background-color: var(--background-color);
 }
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  font-family: 나눔스퀘어라운드, Helvetica, sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
   font-family: 나눔스퀘어라운드, Helvetica, sans-serif;
   box-sizing: border-box;
 }
@@ -46,6 +61,7 @@ Button {
   font-size: 1.2em;
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /*
