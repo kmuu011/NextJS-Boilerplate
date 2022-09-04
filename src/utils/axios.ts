@@ -47,10 +47,24 @@ export const callApi = async <T>(
 
         return result;
     } catch (e: any) {
-        if (e?.response?.status === 401) {
-            localStorage.removeItem('token-code');
-            window.location.href = '/';
+        let status: number | undefined = e?.response?.status;
+
+        switch (status) {
+            case 0:
+                alert('네트워크와 연결이 올바르지 않습니다.\n잠시후 다시 시도해주세요.');
+                break;
+            case 401:
+                localStorage.removeItem('token-code');
+                window.location.href = '/';
+
+                return e?.response;
+            case undefined:
+                alert('알 수 없는 오류가 발생했습니다.\n잠시후 다시 시도해주세요.');
+                localStorage.removeItem('token-code');
+                window.location.href = '/';
+                break;
+            default:
+                return e?.response;
         }
-        return e?.response;
     }
 };
