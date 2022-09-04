@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import styles from "../../../styles/Common.module.scss";
+import styles from "../../../styles/common/Common.module.scss";
 import Image from "next/image";
 
 const Footer: FunctionComponent = () => {

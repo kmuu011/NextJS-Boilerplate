@@ -3,6 +3,7 @@ import '../public/static/font/NanumSquareRound/style.scss';
 import type {AppProps} from 'next/app';
 import {Fragment, useEffect} from "react";
 import Footer from "../src/component/common/Footer";
+import GlobalNavigation from "../src/component/common/GlobalNavigation";
 
 function MyApp({Component, pageProps}: AppProps) {
     useEffect(() => {
@@ -18,6 +19,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
     return (
         <Fragment>
+            <GlobalNavigation/>
             <Component {...pageProps}/>
             <Footer/>
         </Fragment>
