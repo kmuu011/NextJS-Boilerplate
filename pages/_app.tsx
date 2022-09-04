@@ -1,7 +1,6 @@
-import '../styles/reset.scss'
-import '../styles/globals.scss'
-import '../public/static/font/NanumSquareRound/style.scss'
-import type {AppProps} from 'next/app'
+import '../styles/globals.scss';
+import '../public/static/font/NanumSquareRound/style.scss';
+import type {AppProps} from 'next/app';
 import {useEffect} from "react";
 
 function MyApp({Component, pageProps}: AppProps) {

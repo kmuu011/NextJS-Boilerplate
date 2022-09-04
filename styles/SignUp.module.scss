@@ -1,0 +1,27 @@
+.container {
+  text-align: center;
+  margin: 0 auto;
+  width: 450px;
+}
+
+.title {
+  margin-top: 70px;
+  font-size: 28px;
+}
+
+.idDiv,
+.nicknameDiv,
+.emailDiv,
+.passwordDiv,
+.passwordCheckDiv {
+  margin-top: var(--default-top-margin);
+  text-align: left;
+
+  input {
+    margin-top: 2px;
+  }
+}
+
+.buttonDiv {
+  margin-top: var(--default-top-margin);
+}

@@ -1,9 +1,10 @@
-import type {NextPage} from 'next'
-import styles from '../styles/Home.module.scss'
+import type {NextPage} from 'next';
+import styles from '../styles/Home.module.scss';
 import Footer from "../src/component/common/Footer";
 import {FormEventHandler, useEffect, useRef, useState} from "react";
 import SetHead from "../src/component/common/Head";
 import {loginApi} from "../src/api/member";
+import Link from "next/link";
 
 const Home: NextPage = () => {
     const [id, setId] = useState<string>('');
@@ -87,7 +88,9 @@ const Home: NextPage = () => {
             </form>
 
             <div className={styles.buttonDiv}>
-                <button>회원가입</button>
+                <Link href={'/signUp'}>
+                    <button>회원가입</button>
+                </Link>
             </div>
 
             <Footer/>

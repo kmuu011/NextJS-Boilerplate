@@ -1,5 +1,5 @@
-import type { NextPage } from 'next'
-import styles from '../../styles/Temp.module.scss'
+import type { NextPage } from 'next';
+import styles from '../../styles/Temp.module.scss';
 
 const Test: NextPage = () => {
 
