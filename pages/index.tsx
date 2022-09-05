@@ -1,12 +1,11 @@
 import type {NextPage} from 'next';
 import styles from '../styles/Home.module.scss';
-import {FormEventHandler, useEffect, useRef, useState} from "react";
+import {FormEventHandler, useRef, useState} from "react";
 import SetHead from "../src/component/common/Head";
 import {loginApi} from "../src/api/member";
 import Link from "next/link";
 import {goToPage} from "../src/utils/utils";
 import {AxiosResponse} from "axios";
-import Footer from "../src/component/common/Footer";
 
 const Home: NextPage = () => {
     const [id, setId] = useState<string>('');
@@ -48,10 +47,6 @@ const Home: NextPage = () => {
 
         goToPage('/todoGroup');
     };
-
-    useEffect(() => {
-        console.log(localStorage.getItem('token-code'))
-    }, [])
 
     return (
         <div className={styles.container}>
