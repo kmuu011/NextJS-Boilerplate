@@ -8,12 +8,91 @@ $sideMenuWidth: 300px;
   background-color: rgb(0, 0, 0, 0.4);
 }
 
+@mixin iArrow {
+  position: absolute;
+  right: 15px;
+  width: 6px;
+  height: 1.5px;
+  background-color: currentcolor;
+  border-radius: 2px;
+  transition: background .3s cubic-bezier(.645, .045, .355, 1), transform .3s cubic-bezier(.645, .045, .355, 1), top .3s cubic-bezier(.645, .045, .355, 1), color .3s cubic-bezier(.645, .045, .355, 1);
+  content: "";
+}
+
+@mixin menuItem($open) {
+  z-index: 3;
+  cursor: pointer;
+  height: 45px;
+  padding: 0 15px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+
+  i {
+    position: absolute;
+    right: 15px;
+    transform: translate(0, -2px);
+  }
+
+  @if $open {
+    i::after {
+      @include iArrow;
+      transform: rotate(45deg) translate(2.5px);
+    }
+
+    i::before {
+      @include iArrow;
+      transform: rotate(135deg) translate(2.5px);
+    }
+  } @else {
+    i::after {
+      @include iArrow;
+      transform: rotate(225deg) translate(2.5px);
+    }
+
+    i::before {
+      @include iArrow;
+      transform: rotate(315deg) translate(2.5px);
+    }
+  }
+}
+
+@mixin menuGroup($open: true) {
+  .menuItem {
+    @include menuItem($open);
+  }
+
+  .menuSubItem {
+    @include menuItem($open);
+    background-color: #f9f9f9;
+  }
+
+  ul {
+    transition: background .3s cubic-bezier(.645,.045,.355,1),padding .3s cubic-bezier(.645,.045,.355,1);
+  }
+
+  @if $open == false {
+    ul {
+      display: none;
+    }
+  }
+
+  .menuIcon {
+    width: 40px;
+    text-align: center;
+  }
+
+  .menuTitle {
+
+  }
+}
+
 .disableContainer {
   @include container;
   width: 0;
 
   .menuWrap {
-    left: -$sideMenuWidth;
+    left: calc($sideMenuWidth * -1.05);
   }
 }
 
@@ -34,11 +113,14 @@ $sideMenuWidth: 300px;
   box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
   transition: all .3s, width .3s cubic-bezier(0, 0, 1, 1) .3s;
 
-  div {
-    cursor: pointer;
-    padding: 14px;
-    font-size: 22px;
+  .menuGroupOpened {
+    @include menuGroup(true);
+  }
+
+  .menuGroupClosed {
+    @include menuGroup(false);
   }
 }
+
 
 
