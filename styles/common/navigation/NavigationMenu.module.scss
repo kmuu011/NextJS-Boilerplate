@@ -1,0 +1,44 @@
+$sideMenuWidth: 300px;
+
+@mixin container {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.disableContainer {
+  @include container;
+  width: 0;
+
+  .menuWrap {
+    left: -$sideMenuWidth;
+  }
+}
+
+.enableContainer {
+  @include container;
+  width: 100%;
+
+  .menuWrap {
+    left: 0;
+  }
+}
+
+.menuWrap {
+  position: relative;
+  height: 100%;
+  width: $sideMenuWidth;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
+  transition: all .3s, width .3s cubic-bezier(0, 0, 1, 1) .3s;
+
+  div {
+    cursor: pointer;
+    padding: 14px;
+    font-size: 22px;
+  }
+}
+
+
