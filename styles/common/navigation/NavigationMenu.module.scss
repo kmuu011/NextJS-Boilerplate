@@ -68,12 +68,13 @@ $sideMenuWidth: 300px;
   }
 
   ul {
-    transition: background .3s cubic-bezier(.645,.045,.355,1),padding .3s cubic-bezier(.645,.045,.355,1);
+    transition: all .3s;
   }
 
   @if $open == false {
     ul {
-      display: none;
+      visibility: hidden;
+      transition: all .3s;
     }
   }
 
