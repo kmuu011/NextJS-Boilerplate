@@ -1,22 +1,27 @@
 import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
-import {FunctionComponent, useEffect} from "react";
+import {FunctionComponent} from "react";
 import {useRecoilState} from "recoil";
 import {showSideBarAtom} from "../../../recoil/atoms/common";
 import SideMenu from "./SideMenu";
 import {logout} from "../../../api/member";
 import {SideMenuProps} from "../../../type/type";
 
+import settingsImage from "../../../../public/static/button/setting/settings.svg";
+import {hideSideMenuBar} from "../../../const/function";
+
 const GlobalNavigation: FunctionComponent = () => {
     const [showSideBar, setShowSideBar] = useRecoilState(showSideBarAtom);
 
     const menuList: SideMenuProps[] = [
         {
+            image: settingsImage,
             title: '할일 목록',
             children: [
-                {title: '목록 보기', url: '/todoGroup'}
+                {title: '목록 보기', url: '/todoGroup', action: () => hideSideMenuBar(setShowSideBar)}
             ]
         },
         {
+            image: settingsImage,
             title: '설정',
             children: [
                 {title: '로그아웃', action: logout},
@@ -37,8 +42,7 @@ const GlobalNavigation: FunctionComponent = () => {
             <div className={styles.menuWrap}>
                 {menuList.map((menu, i) => {
                     return <SideMenu
-                        title={menu.title}
-                        children={menu.children}
+                        {...menu}
                         key={i}
                     />
                 })}

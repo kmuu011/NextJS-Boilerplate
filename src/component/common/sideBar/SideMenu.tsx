@@ -6,7 +6,7 @@ import Image from "next/image";
 import arrowImage from "../../../../public/static/button/arrow/expand_more.svg";
 import {css} from "@emotion/css";
 
-const SideMenu: FunctionComponent<SideMenuProps> = ({title, children}) => {
+const SideMenu: FunctionComponent<SideMenuProps> = ({image, title, children}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const subMenuWrap = css`
@@ -24,7 +24,7 @@ const SideMenu: FunctionComponent<SideMenuProps> = ({title, children}) => {
                 }}
             >
                 <div className={styles.menuIcon}>
-
+                    <Image src={image} width={25} height={25}/>
                 </div>
                 <div className={styles.menuTitle}>
                     {title}
