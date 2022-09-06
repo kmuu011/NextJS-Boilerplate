@@ -7,7 +7,7 @@ import arrowImage from "../../../../public/static/button/arrow/expand_more.svg";
 import {css} from "@emotion/css";
 
 const SideMenu: FunctionComponent<SideMenuProps> = ({title, children}) => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const subMenuWrap = css`
       overflow-y: hidden;
@@ -35,7 +35,7 @@ const SideMenu: FunctionComponent<SideMenuProps> = ({title, children}) => {
             </div>
             <div className={subMenuWrap}>
                 {children.map((subMenu, i) => {
-                    return <SideSubMenu title={subMenu.title} key={i}/>
+                    return <SideSubMenu {...subMenu} key={i}/>
                 })}
             </div>
         </div>
