@@ -22,12 +22,12 @@ const SideSubMenu: FunctionComponent<SideSubMenuProps>
            url
        }) => {
 
-    if (action) {
-        return getSubMenu(title, action);
-    } else if (url) {
+    if (url) {
         return <Link href={url}>
-            {getSubMenu(title)}
+            {getSubMenu(title, action)}
         </Link>
+    } else if (action) {
+        return getSubMenu(title, action);
     }else{
         return getSubMenu(title);
     }
