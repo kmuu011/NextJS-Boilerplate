@@ -1,28 +1,25 @@
 import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
-import {BaseSyntheticEvent, FunctionComponent, useEffect, useRef, useState} from "react";
-import Link from "next/link";
-import Image from "next/image";
-import {orRegExpMaker} from "../../../utils/utils";
+import {FunctionComponent, useEffect} from "react";
 import {useRecoilState} from "recoil";
 import {showSideBarAtom} from "../../../recoil/atoms/common";
 import SideMenu from "./SideMenu";
+import {logout} from "../../../api/member";
+import {SideMenuProps} from "../../../type/type";
 
 const GlobalNavigation: FunctionComponent = () => {
     const [showSideBar, setShowSideBar] = useRecoilState(showSideBarAtom);
 
-    const menuList = [
+    const menuList: SideMenuProps[] = [
         {
-            title: '설정',
+            title: '할일 목록',
             children: [
-                {title: '로그아웃'}
+                {title: '목록 보기', url: '/todoGroup'}
             ]
         },
         {
             title: '설정',
             children: [
-                {title: '로그아웃'},
-                {title: '로그아웃'},
-                {title: '로그아웃'},
+                {title: '로그아웃', action: logout},
             ]
         }
     ];

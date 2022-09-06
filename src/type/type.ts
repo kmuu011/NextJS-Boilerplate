@@ -5,6 +5,8 @@ export interface IHeaderProps {
 
 export interface SideSubMenuProps {
     title: string
+    action?: Function
+    url?: string
 }
 
 export interface SideMenuProps {

@@ -17,3 +17,8 @@ export const duplicateCheckApi = async (payload: DuplicateCheckDto): Promise<Axi
 export const tokenCheck = async (): Promise<AxiosResponse | undefined> => {
     return await callApi('post', 'member/auth');
 }
+
+export const logout = async (): Promise<void> => {
+    localStorage.removeItem('token-code');
+    window.location.href = '/';
+}
