@@ -4,7 +4,7 @@ import menuButton from "../../../../public/static/button/menu/menu.svg"
 import Image from "next/image";
 import {orRegExpMaker} from "../../../utils/utils";
 import {useRecoilState} from "recoil";
-import {showSideMenuAtom} from "../../../recoil/atoms/common";
+import {showSideBarAtom} from "../../../recoil/atoms/common";
 
 const disabledLocationList: string[] = [
     '/', 'signUp'
@@ -12,7 +12,7 @@ const disabledLocationList: string[] = [
 
 const GlobalNavigation: FunctionComponent = () => {
     const [showNavi, setShowNavi] = useState(false);
-    const [showSideMenu, setShowSideMenu] = useRecoilState(showSideMenuAtom);
+    const [showSideBar, setShowSideBar] = useRecoilState(showSideBarAtom);
 
     useEffect(() => {
         const pathName: string = window.location.pathname;
@@ -21,7 +21,7 @@ const GlobalNavigation: FunctionComponent = () => {
     }, []);
 
     return showNavi ? <div className={styles.container}>
-            <Image onClick={() => setShowSideMenu(!showSideMenu)}
+            <Image onClick={() => setShowSideBar(!showSideBar)}
                    src={menuButton}
                    alt={"메뉴버튼"}
                    width={"35"} height={"35"}
