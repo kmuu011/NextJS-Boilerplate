@@ -1,11 +1,11 @@
 import {SetterOrUpdater} from "recoil";
 const dummyStr: string = 'QWERTYUIOPASDFGHJKLZXCVBNM0123456789';
 
-export const hideSideMenuBar = (setShowSideBar: SetterOrUpdater<boolean>) => {
+export const hideSideMenuBar = (setShowSideBar: SetterOrUpdater<boolean>): void => {
     setShowSideBar(false);
 }
 
-export const createKey = (count?: number, time?: boolean) => {
+export const createKey = (count?: number, time?: boolean): string => {
     count = count || 20;
 
     let key = '';
