@@ -1,7 +1,7 @@
 import {atom} from "recoil";
 
-export const showSideMenuAtom = atom({
-    key: 'showSideMenu',
+export const showSideBarAtom = atom({
+    key: 'showSideBar',
     default: false
 });
 

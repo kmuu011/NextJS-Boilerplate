@@ -4,7 +4,7 @@ import type {AppProps} from 'next/app';
 import {Fragment, useEffect} from "react";
 import Footer from "../src/component/common/Footer";
 import GlobalNavigation from "../src/component/common/navigation/GlobalNavigation";
-import NavigationMenu from "../src/component/common/navigation/NavigationMenu";
+import NavigationMenu from "../src/component/common/sideBar/SideBar";
 
 import {
     RecoilRoot,

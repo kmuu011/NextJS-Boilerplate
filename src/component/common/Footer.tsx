@@ -1,6 +1,7 @@
 import {FunctionComponent} from "react";
 import styles from "../../../styles/common/Common.module.scss";
 import Image from "next/image";
+import logoImage from "../../../public/violet.png";
 
 const Footer: FunctionComponent = () => {
     return (
@@ -12,7 +13,7 @@ const Footer: FunctionComponent = () => {
             >
                 Made by {' '}
                 <span className={styles.logo}>
-                    <Image src="/violet.png" alt="Violet Logo" width={"44"} height={"44"}/>
+                    <Image src={logoImage} alt="Violet Logo" width={"44"} height={"44"}/>
                 </span>
             </a>
         </footer>

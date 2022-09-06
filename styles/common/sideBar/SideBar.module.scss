@@ -1,4 +1,4 @@
-$sideMenuWidth: 300px;
+$sideBarWidth: 300px;
 
 @mixin container {
   height: 100%;
@@ -8,18 +8,8 @@ $sideMenuWidth: 300px;
   background-color: rgb(0, 0, 0, 0.4);
 }
 
-@mixin iArrow {
-  position: absolute;
-  right: 15px;
-  width: 6px;
-  height: 1.5px;
-  background-color: currentcolor;
-  border-radius: 2px;
-  transition: background .3s cubic-bezier(.645, .045, .355, 1), transform .3s cubic-bezier(.645, .045, .355, 1), top .3s cubic-bezier(.645, .045, .355, 1), color .3s cubic-bezier(.645, .045, .355, 1);
-  content: "";
-}
-
 @mixin menuItem($open) {
+  position: relative;
   z-index: 3;
   cursor: pointer;
   height: 45px;
@@ -28,31 +18,22 @@ $sideMenuWidth: 300px;
   display: flex;
   align-items: center;
 
-  i {
+  .menuArrow {
     position: absolute;
-    right: 15px;
-    transform: translate(0, -2px);
-  }
+    right: 20px;
 
-  @if $open {
-    i::after {
-      @include iArrow;
-      transform: rotate(45deg) translate(2.5px);
+    img {
+      transition: background .3s cubic-bezier(.645, .045, .355, 1), transform .3s cubic-bezier(.645, .045, .355, 1), top .3s cubic-bezier(.645, .045, .355, 1), color .3s cubic-bezier(.645, .045, .355, 1);
     }
 
-    i::before {
-      @include iArrow;
-      transform: rotate(135deg) translate(2.5px);
-    }
-  } @else {
-    i::after {
-      @include iArrow;
-      transform: rotate(225deg) translate(2.5px);
-    }
-
-    i::before {
-      @include iArrow;
-      transform: rotate(315deg) translate(2.5px);
+    @if $open {
+      img {
+        transform: rotate(0deg);
+      }
+    } @else {
+      img {
+        transform: rotate(180deg);
+      }
     }
   }
 }
@@ -65,17 +46,6 @@ $sideMenuWidth: 300px;
   .menuSubItem {
     @include menuItem($open);
     background-color: #f9f9f9;
-  }
-
-  ul {
-    transition: all .3s;
-  }
-
-  @if $open == false {
-    ul {
-      visibility: hidden;
-      transition: all .3s;
-    }
   }
 
   .menuIcon {
@@ -93,7 +63,7 @@ $sideMenuWidth: 300px;
   width: 0;
 
   .menuWrap {
-    left: calc($sideMenuWidth * -1.05);
+    left: calc($sideBarWidth * -1.05);
   }
 }
 
@@ -109,7 +79,7 @@ $sideMenuWidth: 300px;
 .menuWrap {
   position: relative;
   height: 100%;
-  width: $sideMenuWidth;
+  width: $sideBarWidth;
   background-color: #ffffff;
   box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
   transition: all .3s, width .3s cubic-bezier(0, 0, 1, 1) .3s;
