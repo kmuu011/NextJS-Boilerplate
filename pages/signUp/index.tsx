@@ -1,6 +1,6 @@
 import type {NextPage} from 'next';
 import styles from '../../styles/SignUp.module.scss';
-import {BaseSyntheticEvent, FormEventHandler, useCallback, useRef, useState} from "react";
+import {BaseSyntheticEvent, FormEventHandler, useMemo, useRef} from "react";
 import SetHead from "../../src/component/common/Head";
 import {duplicateCheckApi, signUpApi} from "../../src/api/member";
 import _ from "lodash";
@@ -26,7 +26,7 @@ const Index: NextPage = () => {
         debounceHandler(e.target.id, e.target);
     }
 
-    const debounceHandler = useCallback(
+    const debounceHandler = useMemo(() =>
         _.debounce(async (id: string, e: HTMLInputElement) => {
             if ((/^id$|^nickname$|^email$/).test(id)) {
                 await duplicateCheck(id, e);
