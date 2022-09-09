@@ -12,9 +12,9 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 const Home: NextPage = () => {
     const [todoGroupList, setTodoGroupList] = useState<TodoGroupItemType[]>([]);
-    const [totalCount, setTotalCount] = useState(0);
-    const [page, setPage] = useState(1);
-    const [last, setLast] = useState(0)
+    const [totalCount, setTotalCount] = useState<number>(0);
+    const [page, setPage] = useState<number>(1);
+    const [last, setLast] = useState<number>(0)
 
     const createTodoGroup = async (): Promise<void> => {
         const response = await createTodoGroupApi({title: `할일 그룹 ${totalCount + 1}`});
@@ -24,11 +24,11 @@ const Home: NextPage = () => {
             return;
         }
 
-        await getTodoGroup()
+        await getTodoGroup(undefined, true);
     }
 
-    const getTodoGroup = async (nextPage?: boolean): Promise<void> => {
-        const selectPage = nextPage ? page + 1 : page;
+    const getTodoGroup = async (nextPage?: boolean, initial?: boolean): Promise<void> => {
+        const selectPage = initial ? 1 : nextPage ? page + 1 : page;
 
         if (last !== 0 && last < selectPage) return;
 
@@ -40,7 +40,11 @@ const Home: NextPage = () => {
         }
 
         setTotalCount(response.data.totalCount);
-        setTodoGroupList([...todoGroupList, ...response.data.items]);
+
+        setTodoGroupList(initial ?
+            response.data.items : [...todoGroupList, ...response.data.items]
+        );
+
         setPage(response.data.page);
         setLast(response.data.last);
     }
