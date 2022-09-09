@@ -4,7 +4,7 @@ import {useRecoilState} from "recoil";
 import {showSideBarAtom} from "../../../recoil/atoms/common";
 import SideMenu from "./SideMenu";
 import {logout} from "../../../api/member";
-import {SideMenuProps} from "../../../type/type";
+import {SideMenuProps} from "../../../type/props";
 
 import settingsImage from "../../../../public/static/button/setting/settings.svg";
 import {hideSideMenuBar} from "../../../const/function";

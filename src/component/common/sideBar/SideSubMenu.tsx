@@ -1,6 +1,6 @@
 import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
 import {FunctionComponent} from "react";
-import {SideSubMenuProps} from "../../../type/type";
+import {SideSubMenuProps} from "../../../type/props";
 import Link from "next/link";
 
 const getSubMenu = (title: string, action?: Function) => {

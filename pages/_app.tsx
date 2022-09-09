@@ -17,7 +17,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
         if (tokenCode) {
             if (pathName === '/') {
-                window.location.href = '/temp';
+                window.location.href = '/todoGroup';
             }
         }
     }, []);

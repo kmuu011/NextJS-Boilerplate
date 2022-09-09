@@ -1,6 +1,6 @@
 import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
 import {FunctionComponent, useState} from "react";
-import {SideMenuProps} from "../../../type/type";
+import {SideMenuProps} from "../../../type/props";
 import SideSubMenu from "./SideSubMenu";
 import Image from "next/image";
 import arrowImage from "../../../../public/static/button/arrow/expand_more.svg";
@@ -24,13 +24,13 @@ const SideMenu: FunctionComponent<SideMenuProps> = ({image, title, children}) =>
                 }}
             >
                 <div className={styles.menuIcon}>
-                    <Image src={image} width={25} height={25}/>
+                    <Image src={image} alt="메뉴 아이콘" width={25} height={25}/>
                 </div>
                 <div className={styles.menuTitle}>
                     {title}
                 </div>
                 <div className={styles.menuArrow}>
-                    <Image src={arrowImage}/>
+                    <Image src={arrowImage} alt="메뉴 확장 화살표"/>
                 </div>
             </div>
             <div className={subMenuWrap}>

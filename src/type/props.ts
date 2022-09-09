@@ -16,3 +16,13 @@ export interface SideMenuProps {
     title: string
     children: SideSubMenuProps[]
 }
+
+export interface CircleButtonProps {
+    image: StaticImageData
+    action: Function
+}
+
+export interface TodoGroupItemProps {
+    title: string
+    updatedAt: string
+}
