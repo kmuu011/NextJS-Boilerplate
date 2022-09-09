@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import {IHeaderProps} from "../../type/type";
+import {IHeaderProps} from "../../type/props";
 import {FunctionComponent} from "react";
 
 const SetHead: FunctionComponent<IHeaderProps> = (props?: IHeaderProps) => {

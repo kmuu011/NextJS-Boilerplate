@@ -1,6 +1,6 @@
 import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
 import {FunctionComponent, useState} from "react";
-import {SideMenuProps} from "../../../type/type";
+import {SideMenuProps} from "../../../type/props";
 import SideSubMenu from "./SideSubMenu";
 import Image from "next/image";
 import arrowImage from "../../../../public/static/button/arrow/expand_more.svg";

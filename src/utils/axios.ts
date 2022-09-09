@@ -51,7 +51,7 @@ export const callApi = async <T>(
 
         switch (status) {
             case 0:
-                return {data: {message: '네트워크와 연결이 올바르지 않습니다.\n잠시후 다시 시도해주세요.'}} as AxiosResponse
+                return {data: {message: '서버와 연결이 올바르지 않습니다.\n잠시후 다시 시도해주세요.'}} as AxiosResponse
             case 401:
                 localStorage.removeItem('token-code');
                 window.location.href = '/';

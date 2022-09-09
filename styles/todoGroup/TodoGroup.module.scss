@@ -1,0 +1,33 @@
+.container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 14px 0 14px 0;
+  width: 100%;
+  min-height: 600px;
+
+  .circleButtonWrap {
+    position: fixed;
+    right: 14px;
+    bottom: 150px;
+  }
+
+  .todoGroupWarp {
+    display: flex;
+    justify-content: center;
+    column-gap: 14px;
+    row-gap: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .todoGroupItem {
+      width: 350px;
+      height: 230px;
+      box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
+      background-color: #fff;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+  }
+
+}

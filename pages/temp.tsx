@@ -1,6 +1,6 @@
 import type {NextPage} from 'next';
 import styles from '../styles/Temp.module.scss';
-import {IHeaderProps} from "../src/type/type";
+import {IHeaderProps} from "../src/type/props";
 import SetHead from "../src/component/common/Head";
 import {tokenCheck} from "../src/api/member";
 import {AxiosResponse} from "axios";
