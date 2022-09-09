@@ -24,4 +24,5 @@ export interface CircleButtonProps {
 
 export interface TodoGroupItemProps {
     title: string
+    updatedAt: string
 }

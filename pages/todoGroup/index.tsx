@@ -25,7 +25,7 @@ const Home: NextPage = () => {
     }
 
     const getTodoGroup = async (): Promise<void> => {
-        const response = await selectTodoGroupApi({page: 1, count: 10});
+        const response = await selectTodoGroupApi({page: 1, count: 12});
 
         if (response?.status !== 200) {
             alert(response?.data.message);
@@ -53,15 +53,17 @@ const Home: NextPage = () => {
                 <CircleButton {...circleButtonProps}/>
             </div>
 
-            <div className={styles.todoGroupWarp}>
+            <div className={styles.todoGroupListWarp}>
                 {
-                    todoGroupList.map(todoGroup => {
-                        return <TodoGroupItem title={todoGroup.title}/>
+                    todoGroupList.map((todoGroup, i) => {
+                        return <TodoGroupItem
+                            title={todoGroup.title}
+                            updatedAt={todoGroup.updatedAt}
+                            key={i}
+                        />
                     })
                 }
-
             </div>
-
         </div>
     )
 }

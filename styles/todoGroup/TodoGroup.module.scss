@@ -11,21 +11,27 @@
     bottom: 150px;
   }
 
-  .todoGroupWarp {
+  .todoGroupListWarp {
     display: flex;
     justify-content: center;
     column-gap: 14px;
-    row-gap: 14px;
+    row-gap: 25px;
     flex-direction: row;
     flex-wrap: wrap;
 
     .todoGroupItem {
-      width: 350px;
-      height: 230px;
-      box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
-      background-color: #fff;
-      border-radius: 30px;
-      cursor: pointer;
+      .todoWrap {
+        width: 350px;
+        height: 230px;
+        box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
+        background-color: #fff;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+
+      .todoGroupTitle {
+        margin-top: 25px;
+      }
     }
 
   }
