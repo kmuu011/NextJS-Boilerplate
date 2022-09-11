@@ -7,9 +7,6 @@ import TodoItem from "./todo/todoItem";
 const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = ({
     index, title, todoList, updatedAt
 }) => {
-
-    console.log(todoList)
-
     return (
         <Link href={`/todoGroup/${index}/todo`}>
             <div
