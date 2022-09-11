@@ -6,23 +6,58 @@ import {deleteTodoApi, updateTodoApi} from "../../../api/todo";
 import confirmImage from "../../../../public/static/button/confirm/confirm.svg";
 import deleteImage from "../../../../public/static/button/delete/delete.svg";
 import Image from "next/image";
+import {css} from "@emotion/css";
 
-const TodoGroupItem: FunctionComponent<TodoItemProps> = ({
-    todoGroupIdx,
-    index, content,
-    completedAt,
-    todoListReload
- }) => {
+const emotionCss = {
+    todoItemCss: (preview: boolean | undefined) => css`
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      column-gap: 20px;
+      border-bottom: 1px solid #eaeaea;
+      width: 100%;
+      padding: ${preview ? 10 : 14}px 0;
+    `,
+
+    checkboxWrap: (preview: boolean | undefined) => css`
+      display: ${preview ? 'none' : 'flex'};
+
+      input[type="checkbox"] {
+        position: relative;
+        height: ${preview ? 0 : 20}px;
+        width: ${preview ? 0 : 20}px;
+      }
+    `,
+
+    content: (complete: boolean, preview: boolean | undefined) => css`
+          cursor: pointer;
+          color: ${complete ? '#afafaf' : '#000000'};
+          font-size: ${preview ? 12 : 16}px;
+          word-break: break-all;
+        `
+}
+const TodoGroupItem: FunctionComponent<TodoItemProps> = (
+    {
+        preview,
+        todoGroupIdx,
+        index, content,
+        completedAt,
+        todoListReload
+    }
+) => {
     const [modifyMode, setModifyMode] = useState<boolean>(false);
     const [todoContent, setTodoContent] = useState<string>(content);
-    const complete = completedAt !== null;
+    const [todoComplete, setTodoComplete] = useState<boolean>(completedAt !== null);
 
     const updateTodo = async (complete?: boolean, offModifyMode?: boolean): Promise<void> => {
         const updateTodoDto: UpdateTodoDto = {
             content: todoContent
         };
 
-        if (complete !== undefined) updateTodoDto.complete = complete;
+        if (complete !== undefined){
+            updateTodoDto.complete = complete;
+            setTodoComplete(complete);
+        }
 
         const response = await updateTodoApi(todoGroupIdx, index, updateTodoDto);
 
@@ -31,7 +66,7 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = ({
             return;
         }
 
-        if(offModifyMode){
+        if (offModifyMode) {
             setModifyMode(false);
         }
     }
@@ -39,26 +74,31 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = ({
     const deleteTodo = async (): Promise<void> => {
         const response = await deleteTodoApi(todoGroupIdx, index);
 
-        if(response?.status !== 200){
+        if (response?.status !== 200) {
             alert(response?.data.message);
             return;
         }
 
-        todoListReload(undefined, true);
+        if (todoListReload) {
+            todoListReload(undefined, true);
+        }
+
         setModifyMode(false);
     }
 
     return (
         <div
-            className={styles.todoItem}
+            className={emotionCss.todoItemCss(preview)}
         >
-            <input
-                type={"checkbox"}
-                defaultChecked={complete}
-                onChange={(e) => {
-                    updateTodo(e.target.checked);
-                }}
-            />
+            <div className={emotionCss.checkboxWrap(preview)}>
+                <input
+                    type={"checkbox"}
+                    defaultChecked={todoComplete}
+                    onChange={(e) => {
+                        updateTodo(e.target.checked);
+                    }}
+                />
+            </div>
             {modifyMode ?
                 <input
                     defaultValue={todoContent}
@@ -68,8 +108,10 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = ({
                 />
                 :
                 <div
-                    className={styles.content}
-                    onClick={() => {setModifyMode(true)}}
+                    className={emotionCss.content(todoComplete, preview)}
+                    onClick={() => {
+                        setModifyMode(true)
+                    }}
                 >
                     {todoContent}
                 </div>

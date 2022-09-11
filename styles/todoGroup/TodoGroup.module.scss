@@ -1,7 +1,7 @@
 .container {
   text-align: center;
   margin: 0 auto;
-  padding: 14px 0 14px 0;
+  padding: 14px 0;
   width: 100%;
   min-height: 600px;
 
@@ -21,8 +21,10 @@
 
     .todoGroupItem {
       .todoWrap {
-        width: 350px;
-        height: 230px;
+        padding: 17px 23px;
+        overflow-y: auto;
+        width: 330px;
+        height: 215px;
         box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
         background-color: #fff;
         border-radius: 30px;

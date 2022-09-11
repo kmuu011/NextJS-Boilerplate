@@ -79,6 +79,7 @@ const TodoGroup: NextPage = () => {
                             index={todoGroup.idx}
                             title={todoGroup.title}
                             updatedAt={todoGroup.updatedAt}
+                            todoList={todoGroup.todoList}
                             key={todoGroup.idx}
                         />
                     })
