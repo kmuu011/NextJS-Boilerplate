@@ -23,6 +23,15 @@ export interface CircleButtonProps {
 }
 
 export interface TodoGroupItemProps {
+    index: number
     title: string
     updatedAt: string
+}
+
+export interface TodoItemProps {
+    todoGroupIdx: number
+    index: number
+    content: string
+    completedAt: string
+    todoListReload: Function
 }

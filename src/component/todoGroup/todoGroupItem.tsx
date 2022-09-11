@@ -1,13 +1,17 @@
 import {FunctionComponent} from "react";
 import styles from "../../../styles/todoGroup/TodoGroup.module.scss";
 import {TodoGroupItemProps} from "../../type/props";
+import Link from "next/link";
 
 const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = ({
-    title, updatedAt
+    index, title, updatedAt
 }) => {
 
     return (
-        <div className={styles.todoGroupItem}>
+        <Link href={`/todoGroup/${index}/todo`}>
+        <div
+            className={styles.todoGroupItem}
+        >
             <div className={styles.todoWrap}>
 
             </div>
@@ -18,6 +22,7 @@ const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = ({
                 {updatedAt}
             </div>
         </div>
+        </Link>
     )
 }
 
