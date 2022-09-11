@@ -10,7 +10,7 @@ import TodoGroupItem from "../../src/component/todoGroup/todoGroupItem";
 import {TodoGroupItemType} from "../../src/type/todoGroup";
 import InfiniteScroll from 'react-infinite-scroller';
 
-const Home: NextPage = () => {
+const TodoGroup: NextPage = () => {
     const [todoGroupList, setTodoGroupList] = useState<TodoGroupItemType[]>([]);
     const [totalCount, setTotalCount] = useState<number>(0);
     const [page, setPage] = useState<number>(1);
@@ -24,10 +24,10 @@ const Home: NextPage = () => {
             return;
         }
 
-        await getTodoGroup(undefined, true);
+        await getTodoGroupList(undefined, true);
     }
 
-    const getTodoGroup = async (nextPage?: boolean, initial?: boolean): Promise<void> => {
+    const getTodoGroupList = async (nextPage?: boolean, initial?: boolean): Promise<void> => {
         const selectPage = initial ? 1 : nextPage ? page + 1 : page;
 
         if (last !== 0 && last < selectPage) return;
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
     }
 
     useEffect(() => {
-        getTodoGroup();
+        getTodoGroupList();
     }, []);
 
     return (
@@ -70,15 +70,16 @@ const Home: NextPage = () => {
                 className={styles.todoGroupListWarp}
                 initialLoad={false}
                 pageStart={1}
-                loadMore={() => getTodoGroup(true)}
+                loadMore={() => getTodoGroupList(true)}
                 hasMore={true}
             >
                 {
                     todoGroupList.map((todoGroup, i) => {
                         return <TodoGroupItem
+                            index={todoGroup.idx}
                             title={todoGroup.title}
                             updatedAt={todoGroup.updatedAt}
-                            key={i}
+                            key={todoGroup.idx}
                         />
                     })
                 }
@@ -88,4 +89,4 @@ const Home: NextPage = () => {
     )
 }
 
-export default Home
+export default TodoGroup

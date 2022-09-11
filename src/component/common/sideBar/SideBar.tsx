@@ -7,6 +7,7 @@ import {logout} from "../../../api/member";
 import {SideMenuProps} from "../../../type/props";
 
 import settingsImage from "../../../../public/static/button/setting/settings.svg";
+import todoImage from "../../../../public/static/button/todo/list.svg";
 import {hideSideMenuBar} from "../../../const/function";
 
 const GlobalNavigation: FunctionComponent = () => {
@@ -14,8 +15,8 @@ const GlobalNavigation: FunctionComponent = () => {
 
     const menuList: SideMenuProps[] = [
         {
-            image: settingsImage,
-            title: '할일 목록',
+            image: todoImage,
+            title: '할일',
             children: [
                 {title: '목록 보기', url: '/todoGroup', action: () => hideSideMenuBar(setShowSideBar)}
             ]
@@ -42,7 +43,9 @@ const GlobalNavigation: FunctionComponent = () => {
             <div className={styles.menuWrap}>
                 {menuList.map((menu, i) => {
                     return <SideMenu
-                        {...menu}
+                        image={menu.image}
+                        title={menu.title}
+                        children={menu.children}
                         key={i}
                     />
                 })}
