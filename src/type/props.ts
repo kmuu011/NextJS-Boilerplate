@@ -1,4 +1,5 @@
 import {StaticImageData} from "next/image";
+import {TodoItemType} from "./todo";
 
 export interface IHeaderProps {
     title?: string
@@ -25,13 +26,15 @@ export interface CircleButtonProps {
 export interface TodoGroupItemProps {
     index: number
     title: string
+    todoList: TodoItemType[]
     updatedAt: string
 }
 
 export interface TodoItemProps {
+    preview?: boolean
     todoGroupIdx: number
     index: number
     content: string
     completedAt: string
-    todoListReload: Function
+    todoListReload?: Function
 }
