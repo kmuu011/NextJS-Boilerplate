@@ -10,12 +10,14 @@ export interface SideSubMenuProps {
     title: string
     action?: Function
     url?: string
+    path?: string
 }
 
 export interface SideMenuProps {
     image: StaticImageData
     title: string
     children: SideSubMenuProps[]
+    path?: string
 }
 
 export interface CircleButtonProps {

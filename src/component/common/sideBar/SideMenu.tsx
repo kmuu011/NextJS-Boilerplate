@@ -1,39 +1,49 @@
-import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
-import {FunctionComponent, useState} from "react";
+import {FunctionComponent, useEffect, useState} from "react";
 import {SideMenuProps} from "../../../type/props";
 import SideSubMenu from "./SideSubMenu";
 import Image from "next/image";
 import arrowImage from "../../../../public/static/button/arrow/expand_more.svg";
-import {css} from "@emotion/css";
+import {
+    menuArrowCss,
+    menuIcon, menuItem,
+    menuTitle,
+    subMenuWrap
+} from "../../../../styles/common/sideBar/SideBar.style";
 
-const SideMenu: FunctionComponent<SideMenuProps> = ({image, title, children}) => {
+const SideMenu: FunctionComponent<SideMenuProps> = (
+    {
+        image, title, children,
+        path
+    }
+) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
-    const subMenuWrap = css`
-      overflow-y: hidden;
-      height: ${isOpen ? children.length*45 : 0}px;
-      transition: height .3s cubic-bezier(.645, .045, .355, 1), transform .3s cubic-bezier(.645, .045, .355, 1), top .3s cubic-bezier(.645, .045, .355, 1), color .3s cubic-bezier(.645, .045, .355, 1);
-    `;
+    useEffect(() => {
+        const pathName: string = window.location.pathname;
+
+        setIsActive(pathName === path);
+    }, [path]);
 
     return (
-        <div className={isOpen ? styles.menuGroupOpened : styles.menuGroupClosed}>
+        <div>
             <div
-                className={styles.menuItem}
+                className={menuItem(false, isActive)}
                 onClick={() => {
                     setIsOpen(!isOpen)
                 }}
             >
-                <div className={styles.menuIcon}>
+                <div className={menuIcon}>
                     <Image src={image} alt="메뉴 아이콘" width={25} height={25}/>
                 </div>
-                <div className={styles.menuTitle}>
+                <div className={menuTitle}>
                     {title}
                 </div>
-                <div className={styles.menuArrow}>
+                <div className={menuArrowCss(isOpen)}>
                     <Image src={arrowImage} alt="메뉴 확장 화살표"/>
                 </div>
             </div>
-            <div className={subMenuWrap}>
+            <div className={subMenuWrap(isOpen, children.length)}>
                 {children.map((subMenu, i) => {
                     return <SideSubMenu {...subMenu} key={i}/>
                 })}

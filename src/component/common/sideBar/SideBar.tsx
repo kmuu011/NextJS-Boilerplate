@@ -1,4 +1,3 @@
-import styles from '../../../../styles/common/sideBar/SideBar.module.scss';
 import {FunctionComponent} from "react";
 import {useRecoilState} from "recoil";
 import {showSideBarAtom} from "../../../recoil/atoms/common";
@@ -9,6 +8,7 @@ import {SideMenuProps} from "../../../type/props";
 import settingsImage from "../../../../public/static/button/setting/settings.svg";
 import todoImage from "../../../../public/static/button/todo/list.svg";
 import {hideSideMenuBar} from "../../../const/function";
+import {container, menuWrap} from "../../../../styles/common/sideBar/SideBar.style";
 
 const GlobalNavigation: FunctionComponent = () => {
     const [showSideBar, setShowSideBar] = useRecoilState(showSideBarAtom);
@@ -18,8 +18,9 @@ const GlobalNavigation: FunctionComponent = () => {
             image: todoImage,
             title: '할일',
             children: [
-                {title: '목록 보기', url: '/todoGroup', action: () => hideSideMenuBar(setShowSideBar)}
-            ]
+                {title: '목록 보기', url: '/todoGroup', action: () => hideSideMenuBar(setShowSideBar), path: ''}
+            ],
+            path: '/todoGroup'
         },
         {
             image: settingsImage,
@@ -31,7 +32,7 @@ const GlobalNavigation: FunctionComponent = () => {
     ];
 
     return (
-        <div className={showSideBar ? styles.enableContainer : styles.disableContainer}
+        <div className={container(showSideBar)}
              id={"naviMenuContainer"}
              onClick={(e) => {
                  const element: HTMLDivElement = e.target as HTMLDivElement;
@@ -40,12 +41,13 @@ const GlobalNavigation: FunctionComponent = () => {
                      setShowSideBar(false);
                  }
              }}>
-            <div className={styles.menuWrap}>
+            <div className={menuWrap(showSideBar)}>
                 {menuList.map((menu, i) => {
                     return <SideMenu
                         image={menu.image}
                         title={menu.title}
                         children={menu.children}
+                        path={menu.path}
                         key={i}
                     />
                 })}
