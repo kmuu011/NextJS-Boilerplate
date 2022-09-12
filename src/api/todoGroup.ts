@@ -10,3 +10,13 @@ export const selectTodoGroupApi = async (payload: SelectQueryDto): Promise<Axios
 export const createTodoGroupApi = async (payload: CreateTodoGroupDto): Promise<AxiosResponse | undefined> => {
     return await callApi<CreateTodoGroupDto>('post', 'todoGroup', payload)
 }
+
+export const updateTodoGroupApi = async (
+    todoGroupIdx: number, payload: CreateTodoGroupDto
+): Promise<AxiosResponse | undefined> => {
+    return await callApi<CreateTodoGroupDto>('patch', `todoGroup/${todoGroupIdx}`, payload);
+}
+
+export const deleteTodoGroupApi = async (todoGroupIdx: number): Promise<AxiosResponse | undefined> => {
+    return await callApi('delete', `todoGroup/${todoGroupIdx}`);
+}

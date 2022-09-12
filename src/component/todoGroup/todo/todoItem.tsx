@@ -4,6 +4,7 @@ import {TodoItemProps} from "../../../type/props";
 import {UpdateTodoDto} from "../../../type/todo";
 import {deleteTodoApi, updateTodoApi} from "../../../api/todo";
 import confirmImage from "../../../../public/static/button/confirm/confirm.svg";
+import cancelImage from "../../../../public/static/button/cancel/cancel.svg";
 import deleteImage from "../../../../public/static/button/delete/delete.svg";
 import Image from "next/image";
 import {css} from "@emotion/css";
@@ -86,6 +87,10 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = (
         setModifyMode(false);
     }
 
+    const cancelAction = (): void => {
+        setModifyMode(false);
+    }
+
     return (
         <div
             className={emotionCss.todoItemCss(preview)}
@@ -123,6 +128,9 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = (
                     </div>
                     <div onClick={() => deleteTodo()}>
                         <Image src={deleteImage} alt="삭제버튼" width={34} height={34}/>
+                    </div>
+                    <div onClick={() => cancelAction()}>
+                        <Image src={cancelImage} alt="취소버튼" width={34} height={34}/>
                     </div>
                 </div>
                 :

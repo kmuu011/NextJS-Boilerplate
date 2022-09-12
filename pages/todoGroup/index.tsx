@@ -81,6 +81,7 @@ const TodoGroup: NextPage = () => {
                             updatedAt={todoGroup.updatedAt}
                             todoList={todoGroup.todoList}
                             key={todoGroup.idx}
+                            reloadTodoGroup={getTodoGroupList}
                         />
                     })
                 }

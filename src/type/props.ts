@@ -28,6 +28,7 @@ export interface TodoGroupItemProps {
     title: string
     todoList: TodoItemType[]
     updatedAt: string
+    reloadTodoGroup: Function
 }
 
 export interface TodoItemProps {

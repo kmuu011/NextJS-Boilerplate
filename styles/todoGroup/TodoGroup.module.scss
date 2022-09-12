@@ -20,6 +20,8 @@
     flex-wrap: wrap;
 
     .todoGroupItem {
+      position: relative;
+
       .todoWrap {
         padding: 17px 23px;
         overflow-y: auto;
@@ -31,8 +33,45 @@
         cursor: pointer;
       }
 
+      .modifyModeWrap {
+        display: flex;
+        padding: 15px;
+        align-items: center;
+        justify-content: center;
+
+        input {
+          width: 50%;
+        }
+        
+        div {
+          cursor: pointer;
+        }
+      }
+
       .todoGroupTitle {
         margin-top: 25px;
+      }
+
+      .moreButtonWrap {
+        cursor: pointer;
+        position: absolute;
+        right: 40px;
+        bottom: 0;
+      }
+
+      .moreWrap {
+        position: absolute;
+        right: 55px;
+        bottom: 34px;
+        width: 60px;
+        z-index: 3;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
+
+        div {
+          cursor: pointer;
+        }
       }
     }
   }
