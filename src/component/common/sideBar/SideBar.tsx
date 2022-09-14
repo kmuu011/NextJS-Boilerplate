@@ -18,7 +18,7 @@ const GlobalNavigation: FunctionComponent = () => {
             image: todoImage,
             title: '할일',
             children: [
-                {title: '목록 보기', url: '/todoGroup', action: () => hideSideMenuBar(setShowSideBar), path: ''}
+                {title: '목록 보기', url: '/todoGroup', action: () => hideSideMenuBar(setShowSideBar)}
             ],
             path: '/todoGroup'
         },
@@ -26,8 +26,10 @@ const GlobalNavigation: FunctionComponent = () => {
             image: settingsImage,
             title: '설정',
             children: [
+                {title: '마이페이지', url: '/member/myPage', action: () => hideSideMenuBar(setShowSideBar)},
                 {title: '로그아웃', action: logout},
-            ]
+            ],
+            path: '/member'
         }
     ];
 
