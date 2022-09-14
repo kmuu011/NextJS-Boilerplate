@@ -16,3 +16,11 @@ export interface DuplicateCheckDto {
     type: number
     value: string
 }
+
+export interface MemberInfoDto {
+    idx: number
+    id: string
+    nickname: string
+    email: string
+    profileImgKey: string
+}
