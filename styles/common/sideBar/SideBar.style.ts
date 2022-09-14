@@ -32,7 +32,7 @@ export const menuItem = (isSub: boolean, isActive: boolean) => {
     let backGroundColor;
 
     if(isActive){
-        backGroundColor = isSub ? '#c9e9ff' : '#81cbff'
+        backGroundColor = isSub ? '#d1d1d1' : '#ababab'
     }else{
         backGroundColor = isSub ? '#f9f9f9' : '#ffffff'
     }
