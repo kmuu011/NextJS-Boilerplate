@@ -32,6 +32,7 @@ export const infoWrap = css`
 `;
 
 export const buttonWrap = css`
+  margin-top: 15px;
   width: 100%;
   
   button {
