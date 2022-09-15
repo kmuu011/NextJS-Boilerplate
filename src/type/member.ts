@@ -25,3 +25,10 @@ export interface MemberInfoDto {
     profileImgKey: string
 }
 
+export interface UpdateMemberInfoDto {
+    nickname: string
+    email: string
+    originalPassword: string
+    password?: string
+}
+
