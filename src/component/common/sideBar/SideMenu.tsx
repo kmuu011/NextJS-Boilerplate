@@ -1,4 +1,4 @@
-import {FunctionComponent, useEffect, useState} from "react";
+import {FunctionComponent, useState} from "react";
 import {SideMenuProps} from "../../../type/props";
 import SideSubMenu from "./SideSubMenu";
 import Image from "next/image";
@@ -16,19 +16,12 @@ const SideMenu: FunctionComponent<SideMenuProps> = (
         path
     }
 ) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isActive, setIsActive] = useState(false);
-
-    useEffect(() => {
-        const pathName: string = window.location.pathname;
-
-        setIsActive(pathName === path);
-    }, [path]);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     return (
         <div>
             <div
-                className={menuItem(false, isActive)}
+                className={menuItem(false, path)}
                 onClick={() => {
                     setIsOpen(!isOpen)
                 }}

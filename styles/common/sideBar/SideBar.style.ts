@@ -1,4 +1,5 @@
 import {css} from "@emotion/css";
+import {useRouter} from "next/router";
 
 const sideBarWidth = 300;
 
@@ -28,13 +29,20 @@ export const subMenuWrap = (isOpen: boolean, length: number) => css`
   transition: height .3s cubic-bezier(.645, .045, .355, 1), transform .3s cubic-bezier(.645, .045, .355, 1), top .3s cubic-bezier(.645, .045, .355, 1), color .3s cubic-bezier(.645, .045, .355, 1);
 `;
 
-export const menuItem = (isSub: boolean, isActive: boolean) => {
-    let backGroundColor;
+export const menuItem = (isSub: boolean, path?: string) => {
+    const pathName = useRouter().pathname;
+    let backGroundColor, isActive;
 
-    if(isActive){
-        backGroundColor = isSub ? '#c9e9ff' : '#81cbff'
-    }else{
-        backGroundColor = isSub ? '#f9f9f9' : '#ffffff'
+    if (isSub) {
+        isActive = pathName === path;
+    } else {
+        isActive = path !== undefined ? pathName.indexOf(path) === 0 : false;
+    }
+
+    if (isActive) {
+        backGroundColor = isSub ? '#d1d1d1' : '#ababab';
+    } else {
+        backGroundColor = isSub ? '#f9f9f9' : '#ffffff';
     }
 
     return css`

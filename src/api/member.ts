@@ -22,3 +22,12 @@ export const logout = async (): Promise<void> => {
     localStorage.removeItem('token-code');
     window.location.href = '/';
 }
+
+export const updateProfileImageApi = async (payload: FormData): Promise<AxiosResponse | undefined> => {
+    return await callApi('patch', 'member/img', payload);
+}
+
+export const deleteProfileImageApi = async (): Promise<AxiosResponse | undefined> => {
+    return await callApi('delete', 'member/img');
+}
+

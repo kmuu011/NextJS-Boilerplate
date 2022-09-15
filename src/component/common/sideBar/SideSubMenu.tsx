@@ -1,13 +1,12 @@
-import {FunctionComponent, useEffect, useState} from "react";
+import {FunctionComponent} from "react";
 import {SideSubMenuProps} from "../../../type/props";
 import Link from "next/link";
 import {menuIcon, menuItem, menuTitle} from "../../../../styles/common/sideBar/SideBar.style";
 
-const getSubMenu = (title: string, action?: Function, isActive?: boolean) => {
-    isActive = isActive || false;
+const getSubMenu = (title: string, action?: Function, path?: string) => {
 
     return <div
-        className={menuItem(true, isActive)}
+        className={menuItem(true, path)}
         onClick={action ? () => action() : undefined}
     >
         <div className={menuIcon}/>
@@ -21,26 +20,17 @@ const SideSubMenu: FunctionComponent<SideSubMenuProps> = (
     {
         title,
         action,
-        url,
-        path
+        url
     }
 ) => {
-    const [isActive, setIsActive] = useState(false);
-
-    useEffect(() => {
-        const pathName: string = window.location.pathname;
-
-        setIsActive(pathName === (path || '') + url);
-    }, [path]);
-
     if (url) {
         return <Link href={url}>
-            {getSubMenu(title, action, isActive)}
+            {getSubMenu(title, action, url)}
         </Link>
     } else if (action) {
-        return getSubMenu(title, action, isActive);
+        return getSubMenu(title, action, url);
     } else {
-        return getSubMenu(title, undefined, isActive);
+        return getSubMenu(title, undefined, url);
     }
 }
 

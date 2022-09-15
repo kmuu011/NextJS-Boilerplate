@@ -10,7 +10,6 @@ export interface SideSubMenuProps {
     title: string
     action?: Function
     url?: string
-    path?: string
 }
 
 export interface SideMenuProps {
@@ -40,4 +39,9 @@ export interface TodoItemProps {
     content: string
     completedAt: string
     todoListReload?: Function
+}
+
+export interface ProfileImageModalProps {
+    reloadMemberInfo: Function
+    profileImageKey?: string
 }
