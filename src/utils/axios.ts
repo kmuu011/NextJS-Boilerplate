@@ -8,7 +8,7 @@ export const callApi = async <T>(
 ): Promise<AxiosResponse | undefined> => {
     const config: AxiosRequestConfig<T> = {
         method,
-        url: hostDomain + url,
+        url: hostDomain + 'api/' + url,
         data,
         headers: {}
     };

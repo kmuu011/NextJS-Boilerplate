@@ -5,6 +5,13 @@ import {BaseSyntheticEvent, FormEventHandler, useEffect, useState} from "react";
 import SetHead from "../../src/component/common/Head";
 import {tokenCheck} from "../../src/api/member";
 import {MemberInfoDto} from "../../src/type/member";
+import ProfileImageModifyModal from "../../src/component/member/myPage/modal/profileImageModify";
+import {useRecoilState} from "recoil";
+import {showProfileImageModal} from "../../src/recoil/atoms/member";
+import Image, {StaticImageData} from "next/image";
+import noImage from "../../public/violet.png";
+import {hostDomain} from "../../src/config";
+import {awaitExpression} from "@babel/types";
 
 const rules = {
     id: /^[0-9a-zA-Z]*$/i,
@@ -14,22 +21,38 @@ const rules = {
 
 const MyPage: NextPage = () => {
     const [memberInfo, setMemberInfo] = useState<MemberInfoDto>();
+    const [showProfileModal, setShowProfileModal] = useRecoilState(showProfileImageModal);
+    const [imageSrc, setImageSrc] = useState<string | StaticImageData>(noImage);
 
     useEffect(() => {
-        tokenCheck()
-            .then(response => {
-                if (response?.status !== 200) {
-                    alert(response?.data.message);
-                    return;
-                }
-
-                setMemberInfo(response.data);
-            })
+        getMemberInfo();
     }, [])
+
+    const getMemberInfo = async (): Promise<void> => {
+        const response = await tokenCheck();
+
+        if (response?.status !== 200) {
+            alert(response?.data.message);
+            return;
+        }
+
+        setMemberInfo(response.data);
+
+        if (response.data.profileImgKey) {
+            setImageSrc(hostDomain + response.data.profileImgKey);
+            return;
+        }
+
+        setImageSrc(noImage);
+    }
 
     return (
         <div className={styles.container}>
             <SetHead/>
+            <ProfileImageModifyModal
+                reloadMemberInfo={getMemberInfo}
+                profileImageKey={memberInfo?.profileImgKey}
+            />
 
             <div className={styles.title}>
                 마이페이지
@@ -37,7 +60,13 @@ const MyPage: NextPage = () => {
 
             <div className={styles.myPageWrap}>
                 <div className={styles.profileImgWrap}>
-                    <div className={styles.profileImgBorder}>
+                    <div className={styles.profileImgBorder} onClick={() => setShowProfileModal(true)}>
+                        <Image
+                            src={imageSrc}
+                            width={180}
+                            height={180}
+                            alt="프로필 사진"
+                        />
                     </div>
                 </div>
 

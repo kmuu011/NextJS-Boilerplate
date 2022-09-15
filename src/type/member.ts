@@ -24,3 +24,4 @@ export interface MemberInfoDto {
     email: string
     profileImgKey: string
 }
+

@@ -40,3 +40,8 @@ export interface TodoItemProps {
     completedAt: string
     todoListReload?: Function
 }
+
+export interface ProfileImageModalProps {
+    reloadMemberInfo: Function
+    profileImageKey?: string
+}
