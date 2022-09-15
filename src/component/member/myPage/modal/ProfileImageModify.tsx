@@ -1,33 +1,33 @@
 import {FunctionComponent, useEffect, useState} from "react";
-import * as styles from "../../../../../styles/member/MyPageProfileImageModal.style";
+import * as styles from "../../../../../styles/member/ProfileImageModifyModal.style";
 import {useRecoilState} from "recoil";
-import {showProfileImageModal} from "../../../../recoil/atoms/member";
+import {showProfileImageModifyModalAtom} from "../../../../recoil/atoms/member";
 import Image, {StaticImageData} from "next/image";
 import noImage from "../../../../../public/violet.png";
 import {deleteProfileImageApi, updateProfileImageApi} from "../../../../api/member";
 import {hostDomain} from "../../../../config";
-import {ProfileImageModalProps} from "../../../../type/props";
+import {ProfileImageModifyModalProps} from "../../../../type/props";
 import {AxiosResponse} from "axios";
 
-const ProfileImageModifyModal: FunctionComponent<ProfileImageModalProps> = (
+const ProfileImageModifyModal: FunctionComponent<ProfileImageModifyModalProps> = (
     {
         reloadMemberInfo,
         profileImageKey
     }
 ) => {
-    const [showProfileModal, setShowProfileModal] = useRecoilState(showProfileImageModal);
-    const [image, setImage] = useState<string>();
+    const [showProfileImageModifyModal, setShowProfileImageModifyModal] = useRecoilState(showProfileImageModifyModalAtom);
+    const [image, setImage] = useState<string | Blob>();
     const [imageSrc, setImageSrc]
         = useState<string | StaticImageData>(noImage);
 
     useEffect(() => {
-        if(profileImageKey){
+        if (profileImageKey) {
             setImageSrc(hostDomain + profileImageKey);
         }
     }, [profileImageKey]);
 
     useEffect(() => {
-        if (showProfileModal) {
+        if (showProfileImageModifyModal) {
             document.body.style.cssText = `
                 position: fixed; 
                 top: -${window.scrollY}px;
@@ -39,15 +39,18 @@ const ProfileImageModifyModal: FunctionComponent<ProfileImageModalProps> = (
             document.body.style.cssText = '';
             window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
         }
-    }, [showProfileModal]);
+    }, [showProfileImageModifyModal]);
 
-    const loadImage = (image: any): void => {
-        if (image.length === 0) {
+    const loadImage = (fileList: FileList | null): void => {
+        if (!fileList) return;
+
+        if (fileList.length === 0) {
             setImageSrc(noImage)
             return;
         }
-        setImageSrc(URL.createObjectURL(image[0]));
-        setImage(image[0]);
+
+        setImageSrc(URL.createObjectURL(fileList[0]));
+        setImage(fileList[0]);
     }
 
     const updateProfileImage = async (): Promise<void> => {
@@ -68,7 +71,7 @@ const ProfileImageModifyModal: FunctionComponent<ProfileImageModalProps> = (
         }
 
         await reloadMemberInfo();
-        setShowProfileModal(false);
+        setShowProfileImageModifyModal(false);
     }
 
     const deleteProfileImage = async (): Promise<void> => {
@@ -80,22 +83,22 @@ const ProfileImageModifyModal: FunctionComponent<ProfileImageModalProps> = (
         }
 
         await reloadMemberInfo();
-        setShowProfileModal(false);
+        setShowProfileImageModifyModal(false);
     }
 
     return (
         <div
-            className={styles.container(showProfileModal)}
+            className={styles.container(showProfileImageModifyModal)}
             id="container"
             onClick={(e) => {
                 const element: HTMLDivElement = e.target as HTMLDivElement;
 
                 if (element.id === 'container') {
-                    setShowProfileModal(false);
+                    setShowProfileImageModifyModal(false);
                 }
             }}
         >
-            <div className={styles.profileImageModifyModal}>
+            <div className={styles.modalBody}>
                 <div className={styles.profileImageBorder}>
                     <Image
                         src={imageSrc}
@@ -108,13 +111,13 @@ const ProfileImageModifyModal: FunctionComponent<ProfileImageModalProps> = (
                 <div className={styles.inputWarp}>
                     <input type="file"
                            id={"img"}
-                           onChange={(e) => loadImage(e.target.files)}
+                           onChange={(e) => loadImage(e.currentTarget.files)}
                     />
                 </div>
 
                 <div className={styles.buttonWrap}>
                     <button onClick={() => updateProfileImage()}>수정하기</button>
-                    <button onClick={() => setShowProfileModal(false)}>취소</button>
+                    <button onClick={() => setShowProfileImageModifyModal(false)}>취소</button>
                     <button onClick={() => deleteProfileImage()}>이미지 삭제</button>
                 </div>
             </div>

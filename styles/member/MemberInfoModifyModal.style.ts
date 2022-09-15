@@ -13,32 +13,22 @@ export const container = (show: boolean) => css`
   align-items: center;
 `;
 
-export const profileImageModifyModal = css`
+export const modalBody = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 240px;
+  width: 300px;
   background-color: var(--background-color);
   border-radius: var(--border-radius);
-  padding: 35px;
+  padding: 10px 35px 35px 35px;
 `;
 
-export const profileImageBorder = css`
-  overflow: hidden;
-  width: 180px;
-  height: 180px;
-  border: 5px solid var(--color-3);
-  border-radius: 50%;
-  cursor: pointer;
-`;
-
-export const inputWarp = css`
+export const infoWrap = css`
   margin-top: var(--default-top-margin);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-
-  input {
-    font-size: 17px;
-  }
 `;
 
 export const buttonWrap = css`

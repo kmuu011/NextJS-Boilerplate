@@ -79,6 +79,7 @@ input[type="email"]{
   font-size: 1.1em;
   border: 1px solid var(--input-border-color);
   background-color: #ffffff;
+  box-sizing: border-box;
 
   cursor: text;
   border-radius: var(--border-radius);

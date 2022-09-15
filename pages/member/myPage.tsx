@@ -1,27 +1,22 @@
 import type {NextPage} from 'next';
 
 import * as styles from "../../styles/member/MyPage.style";
-import {BaseSyntheticEvent, FormEventHandler, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import SetHead from "../../src/component/common/Head";
 import {tokenCheck} from "../../src/api/member";
 import {MemberInfoDto} from "../../src/type/member";
-import ProfileImageModifyModal from "../../src/component/member/myPage/modal/profileImageModify";
+import ProfileImageModifyModal from "../../src/component/member/myPage/modal/ProfileImageModify";
 import {useRecoilState} from "recoil";
-import {showProfileImageModal} from "../../src/recoil/atoms/member";
+import {showMemberInfoModifyModalAtom, showProfileImageModifyModalAtom} from "../../src/recoil/atoms/member";
 import Image, {StaticImageData} from "next/image";
 import noImage from "../../public/violet.png";
 import {hostDomain} from "../../src/config";
-import {awaitExpression} from "@babel/types";
-
-const rules = {
-    id: /^[0-9a-zA-Z]*$/i,
-    nickname: /^[0-9a-zA-Z가-힣]*$/i,
-    email: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
-}
+import MemberInfoModifyModal from "../../src/component/member/myPage/modal/MemberInfoModify";
 
 const MyPage: NextPage = () => {
     const [memberInfo, setMemberInfo] = useState<MemberInfoDto>();
-    const [showProfileModal, setShowProfileModal] = useRecoilState(showProfileImageModal);
+    const [showProfileImageModifyModal, setShowProfileImageModifyModal] = useRecoilState(showProfileImageModifyModalAtom);
+    const [showMemberInfoModifyModal, setShowMemberInfoModifyModal] = useRecoilState(showMemberInfoModifyModalAtom)
     const [imageSrc, setImageSrc] = useState<string | StaticImageData>(noImage);
 
     useEffect(() => {
@@ -54,13 +49,18 @@ const MyPage: NextPage = () => {
                 profileImageKey={memberInfo?.profileImgKey}
             />
 
+            <MemberInfoModifyModal
+                reloadMemberInfo={getMemberInfo}
+                memberInfo={memberInfo}
+            />
+
             <div className={styles.title}>
                 마이페이지
             </div>
 
             <div className={styles.myPageWrap}>
                 <div className={styles.profileImgWrap}>
-                    <div className={styles.profileImgBorder} onClick={() => setShowProfileModal(true)}>
+                    <div className={styles.profileImgBorder} onClick={() => setShowProfileImageModifyModal(true)}>
                         <Image
                             src={imageSrc}
                             width={180}
@@ -98,7 +98,7 @@ const MyPage: NextPage = () => {
                 </div>
 
                 <div className={styles.buttonWrap}>
-                    <button>수정하기</button>
+                    <button onClick={() => setShowMemberInfoModifyModal(true)}>수정하기</button>
                 </div>
             </div>
 

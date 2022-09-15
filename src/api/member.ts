@@ -1,4 +1,4 @@
-import {DuplicateCheckDto, LoginDto, SignUpDto} from "../type/member";
+import {DuplicateCheckDto, LoginDto, SignUpDto, UpdateMemberInfoDto} from "../type/member";
 import {callApi} from "../utils/axios";
 import {AxiosResponse} from "axios";
 
@@ -29,5 +29,9 @@ export const updateProfileImageApi = async (payload: FormData): Promise<AxiosRes
 
 export const deleteProfileImageApi = async (): Promise<AxiosResponse | undefined> => {
     return await callApi('delete', 'member/img');
+}
+
+export const updateMemberInfoApi = async (payload: UpdateMemberInfoDto): Promise<AxiosResponse | undefined> => {
+    return await callApi('patch', 'member', payload);
 }
 

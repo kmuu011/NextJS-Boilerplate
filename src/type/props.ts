@@ -1,5 +1,6 @@
 import {StaticImageData} from "next/image";
 import {TodoItemType} from "./todo";
+import {MemberInfoDto} from "./member";
 
 export interface IHeaderProps {
     title?: string
@@ -41,7 +42,12 @@ export interface TodoItemProps {
     todoListReload?: Function
 }
 
-export interface ProfileImageModalProps {
+export interface ProfileImageModifyModalProps {
     reloadMemberInfo: Function
     profileImageKey?: string
+}
+
+export interface MemberInfoModifyModalProps {
+    reloadMemberInfo: Function
+    memberInfo?: MemberInfoDto
 }
