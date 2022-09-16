@@ -1,5 +1,5 @@
 import type {NextPage} from 'next';
-import styles from '../../styles/SignUp.module.scss';
+import * as styles from '../../styles/SignUp.style';
 import {BaseSyntheticEvent, FormEventHandler, useMemo, useRef} from "react";
 import SetHead from "../../src/component/common/Head";
 import {duplicateCheckApi, signUpApi} from "../../src/api/member";
@@ -127,25 +127,25 @@ const Index: NextPage = () => {
             <div className={styles.title}>회원가입</div>
 
             <form onSubmit={signUp}>
-                <div className={styles.idDiv}>
+                <div className={styles.dataDiv}>
                     <div>아이디</div>
                     <input type="text" id="id" placeholder="아이디"
                            onChange={(e) => typingCheck(e)}/>
                 </div>
 
-                <div className={styles.nicknameDiv}>
+                <div className={styles.dataDiv}>
                     <div>닉네임</div>
                     <input type="text" id="nickname" placeholder="닉네임"
                            onChange={(e) => typingCheck(e)}/>
                 </div>
 
-                <div className={styles.emailDiv}>
+                <div className={styles.dataDiv}>
                     <div>이메일</div>
                     <input type="text" id="email" placeholder="이메일"
                            onChange={(e) => typingCheck(e)}/>
                 </div>
 
-                <div className={styles.passwordDiv}>
+                <div className={styles.dataDiv}>
                     <div>비밀번호</div>
                     <input type="password" id="password"
                            ref={passwordRef}
@@ -153,7 +153,7 @@ const Index: NextPage = () => {
                            placeholder="비밀번호"/>
                 </div>
 
-                <div className={styles.passwordCheckDiv}>
+                <div className={styles.dataDiv}>
                     <div>비밀번호 확인</div>
                     <input type="password" id="passwordCheck"
                            ref={passwordCheckRef}

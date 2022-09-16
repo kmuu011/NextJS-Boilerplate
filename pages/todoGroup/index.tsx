@@ -1,5 +1,5 @@
 import type {NextPage} from 'next';
-import styles from '../../styles/todoGroup/TodoGroup.module.scss';
+import * as styles from '../../styles/todoGroup/TodoGroup.style';
 import {useEffect, useState} from "react";
 import SetHead from "../../src/component/common/Head";
 import CircleButton from "../../src/component/common/button/CircleButton";
@@ -67,7 +67,7 @@ const TodoGroup: NextPage = () => {
             </div>
 
             <InfiniteScroll
-                className={styles.todoGroupListWarp}
+                className={styles.todoGroupListWrap}
                 initialLoad={false}
                 pageStart={1}
                 loadMore={() => getTodoGroupList(true)}

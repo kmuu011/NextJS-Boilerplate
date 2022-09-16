@@ -1,5 +1,5 @@
 import type {NextPage} from 'next';
-import styles from '../styles/Home.module.scss';
+import * as styles from '../styles/Home.style';
 import {FormEventHandler, useRef, useState} from "react";
 import SetHead from "../src/component/common/Head";
 import {loginApi} from "../src/api/member";

@@ -1,27 +1,25 @@
-.container {
+import {css} from "@emotion/css";
+
+export const container = css`
   text-align: center;
   margin: 0 auto;
   width: 450px;
-}
+`;
 
-.title {
+export const title = css`
   margin-top: 70px;
   font-size: 28px;
-}
+`;
 
-.idDiv,
-.nicknameDiv,
-.emailDiv,
-.passwordDiv,
-.passwordCheckDiv {
+export const dataDiv = css`
   margin-top: var(--default-top-margin);
   text-align: left;
 
   input {
     margin-top: 2px;
   }
-}
+`;
 
-.buttonDiv {
+export const buttonDiv = css`
   margin-top: var(--default-top-margin);
-}
+`;

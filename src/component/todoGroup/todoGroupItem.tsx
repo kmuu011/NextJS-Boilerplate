@@ -1,5 +1,5 @@
 import {FunctionComponent, useState} from "react";
-import styles from "../../../styles/todoGroup/TodoGroup.module.scss";
+import * as styles from "../../../styles/todoGroup/TodoGroup.style";
 import {TodoGroupItemProps} from "../../type/props";
 import Link from "next/link";
 import TodoItem from "./todo/todoItem";

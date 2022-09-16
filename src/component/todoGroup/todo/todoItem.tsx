@@ -1,5 +1,5 @@
 import {FunctionComponent, useState} from "react";
-import styles from "../../../../styles/todoGroup/todo/Todo.module.scss";
+import * as styles from "../../../../styles/todoGroup/todo/Todo.style";
 import {TodoItemProps} from "../../../type/props";
 import {UpdateTodoDto} from "../../../type/todo";
 import {deleteTodoApi, updateTodoApi} from "../../../api/todo";

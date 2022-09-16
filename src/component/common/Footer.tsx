@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import styles from "../../../styles/common/Common.module.scss";
+import * as styles from "../../../styles/common/Common.style";
 import Image from "next/image";
 import logoImage from "../../../public/violet.png";
 

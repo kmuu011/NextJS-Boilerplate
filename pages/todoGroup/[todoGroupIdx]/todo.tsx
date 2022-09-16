@@ -1,5 +1,5 @@
 import type {NextPage} from 'next';
-import styles from '../../../styles/todoGroup/todo/Todo.module.scss';
+import * as styles from '../../../styles/todoGroup/todo/Todo.style';
 import SetHead from "../../../src/component/common/Head";
 import CircleButton from "../../../src/component/common/button/CircleButton";
 import InfiniteScroll from 'react-infinite-scroller';
