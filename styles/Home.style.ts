@@ -1,20 +1,22 @@
-.container {
+import {css} from "@emotion/css";
+
+export const container = css`
   text-align: center;
   margin: 0 auto;
   width: 450px;
-}
+`
 
-.title {
+export const title = css`
   margin-top: 150px;
-  font-size: 48px;
-}
+  font-size: 48px
+`;
 
-.titleDesc {
+export const titleDesc = css`
   margin-top: var(--default-top-margin);
   font-size: 28px;
-}
+`;
 
-.idDiv {
+export const idDiv = css`
   margin-top: var(--default-top-margin);
 
   input {
@@ -25,23 +27,23 @@
   input ::after {
     border: 2px solid var(--color-2);
   }
-}
+`;
 
-.passwordDiv {
+export const passwordDiv = css`
   margin-top: -1px;
 
   input{
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-}
+`;
 
-.keepLoginDiv {
+export const keepLoginDiv = css`
   margin-top: var(--default-top-margin);
   display: flex;
-}
+`;
 
-.keepLoginLabel {
+export const keepLoginLabel = css`
   margin-left: 6px;
   font-size: 15px;
 
@@ -49,8 +51,8 @@
   top: 50%;
   transform: translate(0,-50%);
   cursor: pointer;
-}
+`;
 
-.buttonDiv {
+export const buttonDiv = css`
   margin-top: var(--default-top-margin);
-}
+`;

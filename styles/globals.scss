@@ -54,7 +54,7 @@ Button {
   height: 50px;
 
   display: inline-block;
-  background-color: var(--color-2);
+  background-color: var(--color-3);
   border-radius: var(--border-radius);
   outline: none;
   border: 1px solid transparent;
@@ -80,7 +80,6 @@ input[type="email"]{
   border: 1px solid var(--input-border-color);
   background-color: #ffffff;
   box-sizing: border-box;
-
   cursor: text;
   border-radius: var(--border-radius);
   text-decoration: none;
@@ -91,7 +90,6 @@ input[type="email"]{
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-
 }
 
 input[type="text"]:hover,

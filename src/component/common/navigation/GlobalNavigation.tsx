@@ -1,4 +1,4 @@
-import styles from '../../../../styles/common/navigation/GlobalNavigation.module.scss';
+import * as styles from '../../../../styles/common/navigation/GlobalNavigation.style';
 import {FunctionComponent, useEffect, useState} from "react";
 import menuButton from "../../../../public/static/button/menu/menu.svg"
 import Image from "next/image";
