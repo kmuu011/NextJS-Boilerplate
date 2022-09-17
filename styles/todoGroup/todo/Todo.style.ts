@@ -28,5 +28,9 @@ export const todoListWrap = css`
 `;
 
 export const buttonWrap = css`
-    display: flex;
+  display: flex;
+
+  div {
+    cursor: pointer;
+  }
 `;

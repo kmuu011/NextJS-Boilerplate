@@ -44,12 +44,14 @@ export const modifyModeWrap = css`
   align-items: center;
   justify-content: center;
 
-  input {
-    width: 50%;
-  }
-
   div {
     cursor: pointer;
+    padding-left: 25px;
+
+  }
+
+  input {
+    width: 50%;
   }
 `;
 
@@ -75,6 +77,15 @@ export const moreWrap = css`
   box-shadow: 2px 2px 5px rgb(0 0 0 / 40%);
 
   div {
+    display: flex;
     cursor: pointer;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+  }
+
+  div:last-child {
+    border-bottom: none;
   }
 `;

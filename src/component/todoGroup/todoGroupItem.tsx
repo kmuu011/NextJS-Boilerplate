@@ -35,7 +35,7 @@ const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = (
     const updateTodoGroup = async (): Promise<void> => {
         const response = await updateTodoGroupApi(index, {title: todoGroupTitle});
 
-        if(response?.status !== 200){
+        if (response?.status !== 200) {
             alert(response?.data.message);
             return;
         }
@@ -47,7 +47,7 @@ const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = (
     const deleteTodoGroup = async (): Promise<void> => {
         const response = await deleteTodoGroupApi(index);
 
-        if(response?.status !== 200){
+        if (response?.status !== 200) {
             alert(response?.data.message);
             return;
         }
@@ -109,6 +109,7 @@ const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = (
                     <div className={styles.moreWrap}>
                         <div onClick={() => modifyStart()}>수정</div>
                         <div onClick={() => deleteTodoGroup()}>삭제</div>
+                        <div onClick={() => setShowMore(false)}>취소</div>
                     </div>
                     :
                     ''
