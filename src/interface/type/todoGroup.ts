@@ -1,9 +1,5 @@
 import {TodoItemType} from "./todo";
 
-export interface CreateTodoGroupDto {
-    title: string
-}
-
 export interface TodoGroupItemType {
     idx: number
     title: string

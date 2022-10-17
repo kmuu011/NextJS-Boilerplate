@@ -1,13 +1,13 @@
 import {FunctionComponent, useState} from "react";
 import * as styles from "../../../../styles/todoGroup/todo/Todo.style";
-import {TodoItemProps} from "../../../type/props";
-import {UpdateTodoDto} from "../../../type/todo";
 import {deleteTodoApi, updateTodoApi} from "../../../api/todo";
 import confirmImage from "../../../../public/static/button/confirm/confirm.svg";
 import cancelImage from "../../../../public/static/button/cancel/cancel.svg";
 import deleteImage from "../../../../public/static/button/delete/delete.svg";
 import Image from "next/image";
 import {css} from "@emotion/css";
+import {TodoItemProps} from "../../../interface/props/todo";
+import {UpdateTodoDto} from "../../../interface/dto/todo";
 
 const emotionCss = {
     todoItemCss: (preview: boolean | undefined) => css`
@@ -43,7 +43,7 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = (
         todoGroupIdx,
         index, content,
         completedAt,
-        todoListReload
+        reloadTodoList
     }
 ) => {
     const [modifyMode, setModifyMode] = useState<boolean>(false);
@@ -80,8 +80,8 @@ const TodoGroupItem: FunctionComponent<TodoItemProps> = (
             return;
         }
 
-        if (todoListReload) {
-            todoListReload(undefined, true);
+        if (reloadTodoList) {
+            reloadTodoList(undefined, true);
         }
 
         setModifyMode(false);

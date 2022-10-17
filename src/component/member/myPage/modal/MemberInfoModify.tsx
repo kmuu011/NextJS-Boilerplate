@@ -3,9 +3,9 @@ import * as styles from "../../../../../styles/member/MemberInfoModifyModal.styl
 import {useRecoilState} from "recoil";
 import {updateMemberInfoApi} from "../../../../api/member";
 import {AxiosResponse} from "axios";
-import {MemberInfoModifyModalProps} from "../../../../type/props";
 import {showMemberInfoModifyModalAtom} from "../../../../recoil/atoms/member";
-import {UpdateMemberInfoDto} from "../../../../type/member";
+import {UpdateMemberInfoDto} from "../../../../interface/dto/member";
+import {MemberInfoModifyModalProps} from "../../../../interface/props/member";
 
 const rules = {
     nickname: /^[0-9a-zA-Z가-힣]*$/i,

@@ -1,7 +1,7 @@
 import {FunctionComponent} from "react";
-import {SideSubMenuProps} from "../../../type/props";
 import Link from "next/link";
 import {menuIcon, menuItem, menuTitle} from "../../../../styles/common/sideBar/SideBar.style";
+import {SideSubMenuProps} from "../../../interface/props/common";
 
 const getSubMenu = (title: string, action?: Function, path?: string) => {
 

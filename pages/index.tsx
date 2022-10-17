@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         <div className={styles.container}>
             <SetHead/>
 
-            <div className={styles.title}>할일 목록</div>
+            <div className={styles.title}>가계부</div>
 
             <div className={styles.titleDesc}>
                 로그인

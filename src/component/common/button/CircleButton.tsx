@@ -1,7 +1,7 @@
 import {FunctionComponent} from "react";
 import Image from "next/image";
 import {css} from "@emotion/css";
-import {CircleButtonProps} from "../../../type/props";
+import {CircleButtonProps} from "../../../interface/props/common";
 
 const CircleButton: FunctionComponent<CircleButtonProps> = (
     {image, action}

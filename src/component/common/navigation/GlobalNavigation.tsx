@@ -20,7 +20,7 @@ const GlobalNavigation: FunctionComponent = () => {
                 position: fixed; 
                 top: -${window.scrollY}px;
                 overflow-y: scroll;
-                width: 100%;
+                width: 500px;
                 `;
         } else {
             const scrollY = document.body.style.top;

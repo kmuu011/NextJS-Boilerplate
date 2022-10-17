@@ -1,5 +1,4 @@
 import {FunctionComponent, useState} from "react";
-import {SideMenuProps} from "../../../type/props";
 import SideSubMenu from "./SideSubMenu";
 import Image from "next/image";
 import arrowImage from "../../../../public/static/button/arrow/expand_more.svg";
@@ -9,6 +8,7 @@ import {
     menuTitle,
     subMenuWrap
 } from "../../../../styles/common/sideBar/SideBar.style";
+import {SideMenuProps} from "../../../interface/props/common";
 
 const SideMenu: FunctionComponent<SideMenuProps> = (
     {

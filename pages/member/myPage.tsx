@@ -4,7 +4,7 @@ import * as styles from "../../styles/member/MyPage.style";
 import {useEffect, useState} from "react";
 import SetHead from "../../src/component/common/Head";
 import {tokenCheck} from "../../src/api/member";
-import {MemberInfoDto} from "../../src/type/member";
+import {MemberInfoDto} from "../../src/interface/dto/member";
 import ProfileImageModifyModal from "../../src/component/member/myPage/modal/ProfileImageModify";
 import {useRecoilState} from "recoil";
 import {showMemberInfoModifyModalAtom, showProfileImageModifyModalAtom} from "../../src/recoil/atoms/member";

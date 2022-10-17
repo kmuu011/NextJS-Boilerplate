@@ -3,13 +3,13 @@ import * as styles from '../../../styles/todoGroup/todo/Todo.style';
 import SetHead from "../../../src/component/common/Head";
 import CircleButton from "../../../src/component/common/button/CircleButton";
 import InfiniteScroll from 'react-infinite-scroller';
-import {CircleButtonProps} from "../../../src/type/props";
 import addImage from "../../../public/static/button/add/add.svg";
 import {createTodoApi, selectTodoApi} from "../../../src/api/todo";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {TodoItemType} from "../../../src/type/todo";
+import {TodoItemType} from "../../../src/interface/type/todo";
 import TodoItem from "../../../src/component/todoGroup/todo/todoItem";
+import {CircleButtonProps} from "../../../src/interface/props/common";
 
 const Todo: NextPage = () => {
     const todoGroupIdx: number = Number(useRouter().query.todoGroupIdx);
@@ -83,7 +83,7 @@ const Todo: NextPage = () => {
                             index={todo.idx}
                             content={todo.content}
                             completedAt={todo.completedAt}
-                            todoListReload={getTodoList}
+                            reloadTodoList={getTodoList}
                             key={todo.idx}
                         />
                     })

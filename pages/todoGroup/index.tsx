@@ -3,12 +3,12 @@ import * as styles from '../../styles/todoGroup/TodoGroup.style';
 import {useEffect, useState} from "react";
 import SetHead from "../../src/component/common/Head";
 import CircleButton from "../../src/component/common/button/CircleButton";
-import {CircleButtonProps} from "../../src/type/props";
 import addImage from "../../public/static/button/add/add.svg";
 import {createTodoGroupApi, selectTodoGroupApi} from "../../src/api/todoGroup";
 import TodoGroupItem from "../../src/component/todoGroup/todoGroupItem";
-import {TodoGroupItemType} from "../../src/type/todoGroup";
+import {TodoGroupItemType} from "../../src/interface/type/todoGroup";
 import InfiniteScroll from 'react-infinite-scroller';
+import {CircleButtonProps} from "../../src/interface/props/common";
 
 const TodoGroup: NextPage = () => {
     const [todoGroupList, setTodoGroupList] = useState<TodoGroupItemType[]>([]);
@@ -81,7 +81,7 @@ const TodoGroup: NextPage = () => {
                             updatedAt={todoGroup.updatedAt}
                             todoList={todoGroup.todoList}
                             key={todoGroup.idx}
-                            reloadTodoGroup={getTodoGroupList}
+                            reloadTodoGroupList={getTodoGroupList}
                         />
                     })
                 }

@@ -1,4 +1,4 @@
-import {DuplicateCheckDto, LoginDto, SignUpDto, UpdateMemberInfoDto} from "../type/member";
+import {DuplicateCheckDto, LoginDto, SignUpDto, UpdateMemberInfoDto} from "../interface/dto/member";
 import {callApi} from "../utils/axios";
 import {AxiosResponse} from "axios";
 

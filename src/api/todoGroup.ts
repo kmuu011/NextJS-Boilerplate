@@ -1,7 +1,7 @@
 import {callApi} from "../utils/axios";
 import {AxiosResponse} from "axios";
-import {SelectQueryDto} from "../type/common";
-import {CreateTodoGroupDto} from "../type/todoGroup";
+import {SelectQueryDto} from "../interface/dto/common";
+import {CreateTodoGroupDto} from "../interface/dto/todoGroup";
 
 export const selectTodoGroupApi = async (payload: SelectQueryDto): Promise<AxiosResponse | undefined> => {
     return await callApi<SelectQueryDto>('get', 'todoGroup', payload);

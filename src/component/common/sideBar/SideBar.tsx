@@ -3,17 +3,25 @@ import {useRecoilState} from "recoil";
 import {showSideBarAtom} from "../../../recoil/atoms/common";
 import SideMenu from "./SideMenu";
 import {logout} from "../../../api/member";
-import {SideMenuProps} from "../../../type/props";
 
 import settingsImage from "../../../../public/static/button/setting/settings.svg";
 import todoImage from "../../../../public/static/button/todo/list.svg";
-import {hideSideMenuBar} from "../../../const/function";
 import {container, menuWrap} from "../../../../styles/common/sideBar/SideBar.style";
+import {hideSideMenuBar} from "../../../utils/utils";
+import {SideMenuProps} from "../../../interface/props/common";
 
 const GlobalNavigation: FunctionComponent = () => {
     const [showSideBar, setShowSideBar] = useRecoilState(showSideBarAtom);
 
     const menuList: SideMenuProps[] = [
+        {
+            image: todoImage,
+            title: '가계부',
+            children: [
+                {title: '목록 보기', url: '/account', action: () => hideSideMenuBar(setShowSideBar)}
+            ],
+            path: '/account'
+        },
         {
             image: todoImage,
             title: '할일',

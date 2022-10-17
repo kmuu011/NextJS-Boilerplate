@@ -1,6 +1,5 @@
 import {FunctionComponent, useState} from "react";
 import * as styles from "../../../styles/todoGroup/TodoGroup.style";
-import {TodoGroupItemProps} from "../../type/props";
 import Link from "next/link";
 import TodoItem from "./todo/todoItem";
 import moreImage from "../../../public/static/button/more/more.svg";
@@ -8,11 +7,12 @@ import confirmImage from "../../../public/static/button/confirm/confirm.svg";
 import cancelImage from "../../../public/static/button/cancel/cancel.svg";
 import Image from "next/image";
 import {deleteTodoGroupApi, updateTodoGroupApi} from "../../api/todoGroup";
+import {TodoGroupItemProps} from "../../interface/props/todoGroup";
 
 const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = (
     {
         index, title, todoList, updatedAt,
-        reloadTodoGroup
+        reloadTodoGroupList
     }
 ) => {
     const [showMore, setShowMore] = useState(false);
@@ -41,7 +41,7 @@ const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = (
         }
 
         setModifyMode(false);
-        reloadTodoGroup(undefined, true);
+        reloadTodoGroupList(undefined, true);
     }
 
     const deleteTodoGroup = async (): Promise<void> => {
@@ -53,7 +53,7 @@ const TodoGroupItem: FunctionComponent<TodoGroupItemProps> = (
         }
 
         setModifyMode(false);
-        reloadTodoGroup(undefined, true);
+        reloadTodoGroupList(undefined, true);
     }
 
     return (

@@ -19,10 +19,22 @@
   --default-top-margin: 25px;
 }
 
+html {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  height: 100%;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
+}
+
+body{
+  position: relative;
+  width: 500px;
   background-color: var(--background-color);
 }
 

@@ -4,7 +4,7 @@ import {BaseSyntheticEvent, FormEventHandler, useMemo, useRef} from "react";
 import SetHead from "../../src/component/common/Head";
 import {duplicateCheckApi, signUpApi} from "../../src/api/member";
 import _ from "lodash";
-import {SignUpDto} from "../../src/type/member";
+import {SignUpDto} from "../../src/interface/dto/member";
 import Link from "next/link";
 import {goToPage} from "../../src/utils/utils";
 import {AxiosResponse} from "axios";

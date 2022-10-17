@@ -1,10 +1,12 @@
 import {css} from "@emotion/css";
 
 export const footer = css`
-  margin-top: 50px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   flex: 1;
-  padding: var(--default-top-margin) 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
